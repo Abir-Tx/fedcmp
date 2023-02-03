@@ -64,4 +64,4 @@ python main.py
 
 - Used the [MNIST dataset](https://www.tensorflow.org/datasets/catalog/mnist) from TensorFlow Datasets
 - Used the [Flower](https://flower.dev/) library for federated learning
-- Used the [https://github.com/adap/flower/tree/main/baselines/flwr_baselines/publications/fedavg_mnist] example code for the FedAvg algorithm implementation. The code is modified to work with the MNIST dataset. Couldn't fork the specific directory so I copied the code and modified it.
+- Used the [fedavg_mnist](https://github.com/adap/flower/tree/main/baselines/flwr_baselines/publications/fedavg_mnist) example code for the FedAvg algorithm implementation. The code is modified to work with the MNIST dataset. Couldn't fork the specific directory so I copied the code and modified it.
