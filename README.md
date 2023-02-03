@@ -58,7 +58,9 @@ fedcmp (root)
 
 # Steps to run
 
-## 1. Install dependencies
+## MNIST FedAvg
+
+### 1. Install dependencies
 
 First of all **activate the virtual environment**. Then run the following command:
 
@@ -67,7 +69,7 @@ pip install -r requirements.txt
 pip install flwr["simulation"]
 ```
 
-## 2. Run the main script
+### 2. Run the main script
 
 ```bash
 python main.py
