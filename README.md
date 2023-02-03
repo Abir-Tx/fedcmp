@@ -1,6 +1,19 @@
 # fedcmp
 
-A repo to show the visual comparison between different federated learning algorithms
+A repo to show the visual comparison between different federated learning algorithms.
+
+## Algorithms planned to be implemented
+
+<details>
+<summary>Click to expand</summary>
+
+- [x] FedAvg
+- [ ] FedProx
+- [ ] PerFedAvg
+- [ ] QFed
+- [ ] DPSGD
+</details>
+<br>
 
 # Techinal Details
 
