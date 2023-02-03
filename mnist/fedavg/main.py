@@ -8,7 +8,7 @@ import numpy as np
 import torch
 from omegaconf import DictConfig
 
-from flwr_baselines.publications.fedavg_mnist import client, utils
+import client, utils
 
 DEVICE: str = torch.device("cpu")
 

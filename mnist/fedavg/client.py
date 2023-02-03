@@ -10,8 +10,8 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from flwr_baselines.publications.fedavg_mnist import model
-from flwr_baselines.publications.fedavg_mnist.dataset import load_datasets
+import model
+from dataset import load_datasets
 
 
 class FlowerClient(fl.client.NumPyClient):
