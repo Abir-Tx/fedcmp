@@ -1,8 +1,8 @@
 # Federated Averaging MNIST
 
-The following baseline replicates the experiments in *Communication-Efficient Learning of Deep Networks from Decentralized Data* (McMahan et al., 2017), which was the first paper to coin the term Federated Learning and to propose the FederatedAveraging algorthim.
+The following baseline replicates the experiments in _Communication-Efficient Learning of Deep Networks from Decentralized Data_ (McMahan et al., 2017), which was the first paper to coin the term Federated Learning and to propose the FederatedAveraging algorthim.
 
-**Paper Abstract:** 
+**Paper Abstract:**
 
 <center>
 <i>Modern mobile devices have access to a wealth
@@ -26,12 +26,11 @@ rounds by 10–100× as compared to synchronized
 stochastic gradient descent</i>
 </center>
 
-**Paper Authors:** 
+**Paper Authors:**
 
 H. Brendan McMahan, Eider Moore, Daniel Ramage, Seth Hampson, and Blaise Aguera y Arcas.
 
-
-Note: If you use this implementation in your work, please remember to cite the original authors of the paper. 
+Note: If you use this implementation in your work, please remember to cite the original authors of the paper.
 
 **[Link to paper.](https://arxiv.org/abs/1602.05629)**
 
@@ -41,35 +40,35 @@ Note: If you use this implementation in your work, please remember to cite the o
 
 The CNN architecture is detailed in the paper and used to create the **Federated Averaging MNIST** baseline.
 
-| Layer | Details|
-| ----- | ------ |
-| 1 | Conv2D(1, 32, 5, 1, 1) <br/> ReLU, MaxPool2D(2, 2, 1)  |
-| 2 | Conv2D(32, 64, 5, 1, 1) <br/> ReLU, MaxPool2D(2, 2, 1) |
-| 3 | FC(64 * 7 * 7, 512) <br/> ReLU |
-| 5 | FC(512, 10) |
+| Layer | Details                                                |
+| ----- | ------------------------------------------------------ |
+| 1     | Conv2D(1, 32, 5, 1, 1) <br/> ReLU, MaxPool2D(2, 2, 1)  |
+| 2     | Conv2D(32, 64, 5, 1, 1) <br/> ReLU, MaxPool2D(2, 2, 1) |
+| 3     | FC(64 _ 7 _ 7, 512) <br/> ReLU                         |
+| 5     | FC(512, 10)                                            |
 
 ### Training Paramaters
 
-| Description | Value |
-| ----------- | ----- |
-| loss | cross entropy loss |
-| optimizer | SGD |
-| learning rate | 0.1 (by default) |
-| local epochs | 5 (by default) |
-| local batch size | 10 (by default) |
+| Description      | Value              |
+| ---------------- | ------------------ |
+| loss             | cross entropy loss |
+| optimizer        | SGD                |
+| learning rate    | 0.1 (by default)   |
+| local epochs     | 5 (by default)     |
+| local batch size | 10 (by default)    |
 
 ## Running experiments
 
 The `config.yaml` file containing all the tunable hyperparameters and the necessary variables can be found under the `conf` folder.
-[Hydra](https://hydra.cc/docs/tutorials/) is used to manage the different parameters experiments can be ran with. 
+[Hydra](https://hydra.cc/docs/tutorials/) is used to manage the different parameters experiments can be ran with.
 
-To run using the default parameters, just enter `python main.py`, if some parameters need to be overwritten, you can do it like in the following example: 
+To run using the default parameters, just enter `python main.py`, if some parameters need to be overwritten, you can do it like in the following example:
 
 ```sh
 python main.py num_epochs=5 num_rounds=1000 iid=True
-``` 
+```
 
-Results will be stored as timestamped folders inside either `outputs` or `multiruns`, depending on whether you perform single- or multi-runs. 
+Results will be stored as timestamped folders inside either `outputs` or `multiruns`, depending on whether you perform single- or multi-runs.
 
 ### Example output
 
@@ -79,9 +78,11 @@ To help visualize results, the script also plots evaluation curves. Here is an e
       <img src="docs/centralized_metrics.png" alt="Centralized evaluation results" width="400">
 </p>
 
-You will also find the saved history in the `docs/results/` folder, 
-here `C` is referring to the number of clients, `B` the batch size, 
+You will also find the saved history in the `docs/results/` folder,
+here `C` is referring to the number of clients, `B` the batch size,
 `E` the number of local epochs, `R` the number of rounds, and `stag`
 the proportion of clients that are unreachable at each round.
 
+## Running Time
 
+The baseline took approximately 2 hours to run on a single machine with core i7-8650U CPU @ 1.90GHz and 8 GB Ram.
