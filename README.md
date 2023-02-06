@@ -75,6 +75,16 @@ pip install flwr["simulation"]
 python main.py
 ```
 
+## DP-SGD
+
+### 1. Install dependencies
+
+First of all **activate the virtual environment**. Then run the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
 # Credits
 
 - Used the [MNIST dataset](https://www.tensorflow.org/datasets/catalog/mnist) from TensorFlow Datasets
