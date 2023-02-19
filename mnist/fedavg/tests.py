@@ -5,7 +5,7 @@ from flwr_baselines.publications.fedavg_mnist import dataset, model
 
 
 def test_cnn_size_mnist() -> None:
-    """Test number of parameters with MNIST-sized inputs."""
+    """Test number of parameters with FashionMNIST-sized inputs."""
     # Prepare
     net = model.Net()
     expected = 1_663_370
