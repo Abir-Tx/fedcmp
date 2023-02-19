@@ -1,4 +1,4 @@
-"""Runs CNN federated learning for MNST dataset."""
+"""Runs CNN federated learning for FashionMNIST dataset."""
 
 from pathlib import Path
 
@@ -15,7 +15,7 @@ DEVICE: str = torch.device("cpu")
 
 @hydra.main(config_path="docs/conf", config_name="config", version_base=None)
 def main(cfg: DictConfig) -> None:
-    """Main function to run CNN federated learning on MNIST.
+    """Main function to run CNN federated learning on FashionMNIST.
 
     Parameters
     ----------
