@@ -74,6 +74,22 @@ pip install flwr["simulation"]
 python main.py
 ```
 
+## MNIST FedProx
+
+### 1. Install dependencies
+
+First of all **activate the virtual environment**. Then run the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Run the main script
+
+```bash
+python main.py num_epochs=5 num_rounds=1000 iid=True
+```
+
 # Credits
 
 - Used the [MNIST dataset](https://www.tensorflow.org/datasets/catalog/mnist) from TensorFlow Datasets
