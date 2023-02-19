@@ -1,4 +1,4 @@
-"""MNIST dataset utilities for federated learning."""
+"""FashionMNIST dataset utilities for federated learning."""
 
 
 from typing import List, Optional, Tuple
@@ -7,7 +7,7 @@ import numpy as np
 import torch
 import torchvision.transforms as transforms
 from torch.utils.data import ConcatDataset, DataLoader, Dataset, Subset, random_split
-from torchvision.datasets import MNIST
+from torchvision.datasets import FashionMNIST
 
 
 def load_datasets(
@@ -57,18 +57,18 @@ def load_datasets(
 
 
 def _download_data() -> Tuple[Dataset, Dataset]:
-    """Downloads (if necessary) and returns the MNIST dataset.
+    """Downloads (if necessary) and returns the FashionMNIST dataset.
 
     Returns
     -------
-    Tuple[MNIST, MNIST]
-        The dataset for training and the dataset for testing MNIST.
+    Tuple[FashionMNIST, FashionMNIST]
+        The dataset for training and the dataset for testing FashionMNIST.
     """
     transform = transforms.Compose(
         [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]
     )
-    trainset = MNIST("./dataset", train=True, download=True, transform=transform)
-    testset = MNIST("./dataset", train=False, download=True, transform=transform)
+    trainset = FashionMNIST("./dataset", train=True, download=True, transform=transform)
+    testset = FashionMNIST("./dataset", train=False, download=True, transform=transform)
     return trainset, testset
 
 
