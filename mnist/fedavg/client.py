@@ -1,5 +1,5 @@
 # pylint: disable=too-many-arguments
-"""Defines the MNIST Flower Client and a function to instantiate it."""
+"""Defines the FashionMNIST Flower Client and a function to instantiate it."""
 
 
 from collections import OrderedDict
