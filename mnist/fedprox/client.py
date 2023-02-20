@@ -10,8 +10,8 @@ import torch
 from flwr.common.typing import NDArrays, Scalar
 from torch.utils.data import DataLoader
 
-from flwr_baselines.publications.fedprox_mnist import model
-from flwr_baselines.publications.fedprox_mnist.dataset import load_datasets
+import model
+from dataset import load_datasets
 
 
 class FlowerClient(
