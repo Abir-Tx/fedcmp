@@ -8,7 +8,7 @@ A repo to show the visual comparison between different federated learning algori
 <summary>Click to expand</summary>
 
 - [x] FedAvg
-- [ ] FedProx
+- [x] FedProx
 - [ ] PerFedAvg
 - [ ] QFed
 </details>
