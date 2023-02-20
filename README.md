@@ -82,6 +82,8 @@ First of all **activate the virtual environment**. Then run the following comman
 
 ```bash
 pip install -r requirements.txt
+pip install -U flwr["simulation"]
+
 ```
 
 ### 2. Run the main script
