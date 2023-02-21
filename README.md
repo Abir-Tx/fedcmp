@@ -8,7 +8,7 @@ A repo to show the visual comparison between different federated learning algori
 <summary>Click to expand</summary>
 
 - [x] FedAvg
-- [ ] FedProx
+- [x] FedProx
 - [ ] PerFedAvg
 - [ ] QFed
 </details>
@@ -72,6 +72,24 @@ pip install flwr["simulation"]
 
 ```bash
 python main.py
+```
+
+## MNIST FedProx
+
+### 1. Install dependencies
+
+First of all **activate the virtual environment**. Then run the following command:
+
+```bash
+pip install -r requirements.txt
+pip install -U flwr["simulation"]
+
+```
+
+### 2. Run the main script
+
+```bash
+python main.py num_epochs=5 num_rounds=1000 iid=True
 ```
 
 # Credits
