@@ -49,6 +49,7 @@ class Client:
         self.local_epochs = local_epochs
         self.num_workers = num_workers
 
+
     def train(self):
         train_loader = DataLoader(
             self.dataset,
@@ -101,7 +102,7 @@ class Server:
 
 
 def main(
-    num_rounds=3, num_clients=3, batch_size=32, learning_rate=0.1, local_epochs=20
+    num_rounds=3, num_clients=1, batch_size=32, learning_rate=0.1, local_epochs=20
 ):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
@@ -132,11 +133,11 @@ def main(
             batch_size=batch_size,
             learning_rate=learning_rate,
             local_epochs=local_epochs,
-            num_workers=20,
+            num_workers=10,
         )
         for client_dataset in client_datasets
     ]
-    server = Server(clients, learning_rate=learning_rate, num_workers=20)
+    server = Server(clients, learning_rate=learning_rate, num_workers=10)
     test_accs = []
     train_losses = []  # list to store the train loss vs communication round
 
