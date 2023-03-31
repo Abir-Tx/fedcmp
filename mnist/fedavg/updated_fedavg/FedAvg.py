@@ -102,7 +102,7 @@ class Server:
 
 
 def main(
-    num_rounds=10, num_clients=10, batch_size=32, learning_rate=0.1, local_epochs=5
+    num_rounds=5, num_clients=5, batch_size=64, learning_rate=0.1, local_epochs=5
 ):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
