@@ -102,7 +102,7 @@ class Server:
 
 
 def main(
-    num_rounds=3, num_clients=1, batch_size=32, learning_rate=0.1, local_epochs=20
+    num_rounds=10, num_clients=10, batch_size=32, learning_rate=0.1, local_epochs=5
 ):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
@@ -191,7 +191,7 @@ def main(
     ax1.set_xlabel("Communication round")
     ax1.set_ylabel("Test accuracy", color="g")
     ax2.set_ylabel("Train loss", color="b")
-    plt.savefig("test_acc_train_loss.png")
+    plt.savefig("images/test_acc_train_loss.png")
 
 
 if __name__ == "__main__":
