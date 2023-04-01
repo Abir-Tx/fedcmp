@@ -102,7 +102,7 @@ class Server:
 
 
 def main(
-    num_rounds=5, num_clients=5, batch_size=64, learning_rate=0.1, local_epochs=5
+    num_rounds=100, num_clients=50, batch_size=64, learning_rate=0.1, local_epochs=20
 ):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
@@ -133,11 +133,11 @@ def main(
             batch_size=batch_size,
             learning_rate=learning_rate,
             local_epochs=local_epochs,
-            num_workers=10,
+            num_workers=15,
         )
         for client_dataset in client_datasets
     ]
-    server = Server(clients, learning_rate=learning_rate, num_workers=10)
+    server = Server(clients, learning_rate=learning_rate, num_workers=15)
     test_accs = []
     train_losses = []  # list to store the train loss vs communication round
 
