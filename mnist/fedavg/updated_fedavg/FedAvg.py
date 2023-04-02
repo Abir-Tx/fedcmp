@@ -6,6 +6,22 @@ from torch.utils.data import DataLoader, Dataset
 from torchvision import datasets, transforms
 import matplotlib.pyplot as plt
 import numpy as np
+import os
+
+# set the GPU memory limit to 8 GB
+#  torch.cuda.set_per_process_memory_fraction(0.8)
+
+# Set the CUDA_VISIBLE_DEVICES environment variable
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+
+# Select the first GPU
+torch.cuda.set_device(0)
+
+# Increase the memory allocation to 8 GB
+torch.cuda.empty_cache()
+torch.cuda.set_device(0)
+torch.cuda.set_per_process_memory_fraction(0.8, 0)
+#  torch.cuda.set_per_process_memory_growth(True)
 
 
 # Define the neural network
@@ -102,7 +118,7 @@ class Server:
 
 
 def main(
-    num_rounds=100, num_clients=50, batch_size=64, learning_rate=0.1, local_epochs=20
+    num_rounds=10, num_clients=10, batch_size=10, learning_rate=0.1, local_epochs=5
 ):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
