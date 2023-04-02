@@ -7,6 +7,7 @@ from torchvision import datasets, transforms
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import argparse
 
 # set the GPU memory limit to 8 GB
 #  torch.cuda.set_per_process_memory_fraction(0.8)
@@ -119,7 +120,34 @@ class Server:
 
 def main(
     num_rounds=10, num_clients=10, batch_size=10, learning_rate=0.1, local_epochs=5
-):
+    ):
+    #  CLA
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--r', type=int, default=num_rounds, help='Number of federated learning rounds to run')
+    parser.add_argument('--c', type=int, default=num_clients, help='Number of clients in the federated learning setting')
+    parser.add_argument('--b', type=int, default=batch_size, help='Batch size for local training')
+    parser.add_argument('--lr', type=float, default=learning_rate, help='Learning rate for local training')
+    parser.add_argument('--le', type=int, default=local_epochs, help='Number of epochs to run for local training')
+    args = parser.parse_args()
+
+    # Retrieve the command-line arguments
+    num_rounds = args.r
+    num_clients = args.c
+    batch_size = args.b
+    learning_rate = args.lr
+    local_epochs = args.le
+    # End of CLA
+
+    # print the current params
+    print ("Current parameters:")
+    print("Number of rounds: ", num_rounds)
+    print("Number of clients: ", num_clients)
+    print("Batch size: ", batch_size)
+    print("Learning rate: ", learning_rate)
+    print("Local epochs: ", local_epochs)
+
+
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
