@@ -235,7 +235,9 @@ def main(
     ax1.set_xlabel("Communication round")
     ax1.set_ylabel("Test accuracy", color="g")
     ax2.set_ylabel("Train loss", color="b")
-    plt.savefig("images/test_acc_train_loss.png")
+    #  filename = str(num_rounds) + "_r" + str(num_clients) + "_c" + str(batch_size) + "_b" + str(learning_rate) + "_lr" + str(local_epochs) + "_le.png"
+    filename = f"{num_rounds}r_{num_clients}c_{batch_size}b_{learning_rate}lr_{local_epochs}le.png"
+    plt.savefig("images/" + filename)
 
 
 if __name__ == "__main__":
