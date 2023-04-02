@@ -8,9 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import argparse
-
-# set the GPU memory limit to 8 GB
-#  torch.cuda.set_per_process_memory_fraction(0.8)
+import time
 
 # Set the CUDA_VISIBLE_DEVICES environment variable
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
@@ -151,6 +149,10 @@ def main(
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
 
+    # Start the time count
+    start_time = time.time()
+
+
     transform = transforms.Compose(
         [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]
     )
@@ -238,6 +240,12 @@ def main(
     #  filename = str(num_rounds) + "_r" + str(num_clients) + "_c" + str(batch_size) + "_b" + str(learning_rate) + "_lr" + str(local_epochs) + "_le.png"
     filename = f"{num_rounds}r_{num_clients}c_{batch_size}b_{learning_rate}lr_{local_epochs}le.png"
     plt.savefig("images/" + filename)
+
+    # End the time count
+    end_time = time.time()
+    print "----------------------------------------"
+    print(f"Total time: {end_time - start_time}")
+    print "----------------------------------------"
 
 
 if __name__ == "__main__":
