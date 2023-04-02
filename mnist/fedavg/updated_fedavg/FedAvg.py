@@ -9,6 +9,9 @@ import numpy as np
 import os
 import argparse
 import time
+import sys
+
+sys.stdout = open("FedAvg.txt", "w")
 
 # Set the CUDA_VISIBLE_DEVICES environment variable
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
@@ -243,9 +246,12 @@ def main(
 
     # End the time count
     end_time = time.time()
-    print "----------------------------------------"
+    print ("----------------------------------------")
     print(f"Total time: {end_time - start_time}")
-    print "----------------------------------------"
+    print ("----------------------------------------")
+
+    # Restore standard output
+    sys.stdout = sys.__stdout__
 
 
 if __name__ == "__main__":
