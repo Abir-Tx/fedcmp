@@ -16,6 +16,7 @@ def generate_graph(algorithm="", dataset="", goal="", times=10):
     plt.title("Test Accuracy vs Train Loss for " + algorithm + " on " + dataset + " dataset")
     plt.legend()
     plt.savefig("../results/" + dataset + "_" + algorithm + "_" + goal + ".png")
+    plt.show()
     plt.clf()
 
 
