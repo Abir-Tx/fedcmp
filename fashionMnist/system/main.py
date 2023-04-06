@@ -27,6 +27,7 @@ from flcore.trainmodel.alexnet import *
 from flcore.trainmodel.mobilenet_v2 import *
 
 from utils.result_utils import average_data
+from utils.result_utils import generate_graph
 from utils.mem_utils import MemReporter
 
 logger = logging.getLogger()
@@ -39,10 +40,6 @@ torch.manual_seed(0)
 vocab_size = 98635
 max_len = 200
 emb_dim = 32
-
-
-import matplotlib.pyplot as plt
-import numpy as np
 
 
 def run(args):
@@ -133,6 +130,13 @@ def run(args):
     # Global average
     average_data(
         dataset=args.dataset, algorithm=args.algorithm, goal=args.goal, times=args.times
+    )
+
+    generate_graph(
+        dataset=args.dataset,
+        algorithm=args.algorithm,
+        goal=args.goal,
+        times=args.times,
     )
 
     print("All done!")
