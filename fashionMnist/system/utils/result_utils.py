@@ -1,6 +1,22 @@
 import h5py
 import numpy as np
 import os
+import matplotlib.pyplot as plt
+
+
+def generate_graph(algorithm="", dataset="", goal="", times=10):
+    test_acc = get_all_results_for_one_algo(algorithm, dataset, goal, times)
+
+    for i in range(times):
+        plt.plot(test_acc[i], label="run " + str(i))
+
+    plt.legend()
+    plt.xlabel("Number of iterations")
+    plt.ylabel("Test accuracy")
+    plt.title("Test accuracy vs number of iterations")
+    plt.show()
+    plt.savefig("../results/" + dataset + "_" + algorithm + "_" + goal + ".png")
+
 
 
 def average_data(algorithm="", dataset="", goal="", times=10):
@@ -12,7 +28,6 @@ def average_data(algorithm="", dataset="", goal="", times=10):
 
     print("std for best accurancy:", np.std(max_accurancy))
     print("mean for best accurancy:", np.mean(max_accurancy))
-
 
 def get_all_results_for_one_algo(algorithm="", dataset="", goal="", times=10):
     test_acc = []
