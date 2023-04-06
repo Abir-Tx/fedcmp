@@ -1,1 +1,4 @@
 dataset/fmnist
+results
+system/models/*
+models/*
