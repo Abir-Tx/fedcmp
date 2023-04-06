@@ -41,8 +41,14 @@ max_len = 200
 emb_dim = 32
 
 
+import matplotlib.pyplot as plt
+import numpy as np
+
+
 def run(args):
     time_list = []
+    train_losses = []  # list to store training losses
+    test_accuracies = []  # list to store test accuracies
     reporter = MemReporter()
     model_str = args.model
 
@@ -118,7 +124,7 @@ def run(args):
         else:
             raise NotImplementedError
 
-        server.train()
+        server.train()  # get the train loss and test accuracy
 
         time_list.append(time.time() - start)
 
