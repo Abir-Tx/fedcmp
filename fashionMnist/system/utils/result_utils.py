@@ -3,67 +3,6 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 
-
-#  def generate_graph(algorithm="", dataset="", goal="", times=10):
-#      test_acc = get_all_results_for_one_algo(algorithm, dataset, goal, times)
-#      test_loss = get_train_loss_for_one_algo(algorithm, dataset, goal, times)
-#
-#
-#      print ("test_acc: ", test_acc)
-#      print ("test_loss: ", test_loss)
-
-
-    #  for i in range(times):
-        #  plt.plot(test_loss[i], test_acc[i], label="run " + str(i))
-
-    #  plt.xlabel("Train Loss")
-    #  plt.ylabel("Test Accuracy")
-    #  plt.title("Test Accuracy vs Train Loss for " + algorithm + " on " + dataset + " dataset")
-    #  plt.legend()
-    #  plt.clf()
-    #
-    #  fig, ax1 = plt.subplots()
-    #  ax2 = ax1.twinx()
-    #  x = range(1, 20 + 1)
-    #  y1 = test_acc
-    #  #  y2 = np.array(test_loss).ravel()  # flatten the y array to match the length of x
-    #  ax1.plot(x, y1, "g-")
-    #  ax2.plot(x, y2, "b-")
-    #  ax1.set_xlabel("Communication round")
-    #  ax1.set_ylabel("Test accuracy", color="g")
-    #  ax2.set_ylabel("Train loss", color="b")
-    #  plt.show()
-
-#      fig, ax1 = plt.subplots()
-    #  ax2 = ax1.twinx()
-    #  ax1.plot( test_acc, "g-")
-    #  ax2.plot( test_loss, "b-")
-    #  ax1.set_xlabel("Communication round")
-    #  ax1.set_ylabel("Test accuracy", color="g")
-    #  ax2.set_ylabel("Train loss", color="b")
-    #  plt.show()
-    #  plt.savefig("../results/" + dataset + "_" + algorithm + "_" + goal + "_" + str(times) + ".png")
-
-#  def generate_graph(algorithm="", dataset="", goal="", times=10):
-#      test_acc = get_all_results_for_one_algo(algorithm, dataset, goal, times)
-#      test_loss = get_train_loss_for_one_algo(algorithm, dataset, goal, times)
-#
-#
-#      #  test_acc = np.array(test_acc).tolist()
-#      #  test_loss = np.array(test_loss).tolist()
-#      print ("test_acc: ", test_acc)
-#      print ("test_loss: ", test_loss)
-#      # Plot the data
-#      fig, ax1 = plt.subplots()
-#      ax2 = ax1.twinx()
-#      ax1.plot(range(1, len(test_acc) + 1), test_acc, "g-")
-#      ax2.plot(range(1, len(test_acc) + 1), test_loss, "b-")
-#      ax1.set_xlabel("Communication round")
-#      ax1.set_ylabel("Test accuracy", color="g")
-#      ax2.set_ylabel("Train loss", color="b")
-#      plt.title("Test Accuracy and Train Loss vs Communication Round for " + algorithm + " on " + dataset + " dataset")
-#      plt.show()
-
 def generate_graph(algorithm="", dataset="", goal="", times=10):
     test_acc = get_all_results_for_one_algo(algorithm, dataset, goal, times)
     test_loss = get_train_loss_for_one_algo(algorithm, dataset, goal, times)
@@ -85,9 +24,7 @@ def generate_graph(algorithm="", dataset="", goal="", times=10):
     plt.title("Test Accuracy and Train Loss vs Communication Rounds for " + algorithm + " on " + dataset + " dataset")
     ax1.legend()
     plt.show()
-
-
-
+    plt.savefig("../results/" + dataset + "_" + algorithm + "_" + goal + "_" + str(times) + ".png")
 
 
 def average_data(algorithm="", dataset="", goal="", times=10):
