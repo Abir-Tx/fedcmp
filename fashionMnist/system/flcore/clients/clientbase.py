@@ -58,7 +58,7 @@ class Client(object):
         if batch_size == None:
             batch_size = self.batch_size
         train_data = read_client_data(self.dataset, self.id, is_train=True)
-        return DataLoader(train_data, batch_size, drop_last=True, shuffle=False)
+        return DataLoader(train_data, batch_size, drop_last=True, shuffle=False, num_workers=0)
 
     def load_test_data(self, batch_size=None):
         if batch_size == None:
