@@ -44,8 +44,8 @@ emb_dim = 32
 logger = logging.getLogger("fedcmpLogger")
 logger.setLevel(logging.DEBUG)
 
-timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-log_file = f"fedcmpLogger_{timestamp}.log"
+timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+log_file = f"logs/fedcmpLogger_{timestamp}.log"
 file_handler = logging.FileHandler(log_file)
 file_handler.setLevel(logging.DEBUG)
 
@@ -59,6 +59,18 @@ logger.addHandler(file_handler)
 # Disable propagation and set propagation to False
 logger.propagate = False
 
+logger.info(
+    r"""
+      ______       _  _____ __  __ _____    _                                 
+ |  ____|     | |/ ____|  \/  |  __ \  | |                                
+ | |__ ___  __| | |    | \  / | |__) | | |     ___   __ _  __ _  ___ _ __ 
+ |  __/ _ \/ _` | |    | |\/| |  ___/  | |    / _ \ / _` |/ _` |/ _ \ '__|
+ | | |  __/ (_| | |____| |  | | |      | |___| (_) | (_| | (_| |  __/ |   
+ |_|  \___|\__,_|\_____|_|  |_|_|      |______\___/ \__, |\__, |\___|_|   
+                                                     __/ | __/ |          
+                                                    |___/ |___/
+"""
+)
 
 def run(args):
     time_list = []
@@ -389,5 +401,40 @@ if __name__ == "__main__":
     if args.dlg_eval:
         print("DLG attack evaluate round gap: {}".format(args.dlg_gap))
     print("=" * 50)
+
+    # Log these 
+    logger.info("Algorithm: {}".format(args.algorithm))
+    logger.info("Local batch size: {}".format(args.batch_size))
+    logger.info("Local steps: {}".format(args.local_steps))
+    logger.info("Local learing rate: {}".format(args.local_learning_rate))
+    logger.info("Local learing rate decay: {}".format(args.learning_rate_decay))
+    if args.learning_rate_decay:
+        logger.info(
+            "Local learing rate decay gamma: {}".format(args.learning_rate_decay_gamma)
+        )
+    logger.info("Total number of clients: {}".format(args.num_clients))
+    logger.info("Clients join in each round: {}".format(args.join_ratio))
+    logger.info("Clients randomly join: {}".format(args.random_join_ratio))
+    logger.info("Client drop rate: {}".format(args.client_drop_rate))
+    logger.info("Client select regarding time: {}".format(args.time_select))
+    if args.time_select:
+        logger.info("Time threthold: {}".format(args.time_threthold))
+    logger.info("Running times: {}".format(args.times))
+    logger.info("Dataset: {}".format(args.dataset))
+    logger.info("Number of classes: {}".format(args.num_classes))
+    logger.info("Backbone: {}".format(args.model))
+    logger.info("Using device: {}".format(args.device))
+    logger.info("Using DP: {}".format(args.privacy))
+    if args.privacy:
+        logger.info("Sigma for DP: {}".format(args.dp_sigma))
+    logger.info("Auto break: {}".format(args.auto_break))
+    if not args.auto_break:
+        logger.info("Global rounds: {}".format(args.global_rounds))
+    if args.device == "cuda":
+        logger.info("Cuda device id: {}".format(os.environ["CUDA_VISIBLE_DEVICES"]))
+    logger.info("DLG attack evaluate: {}".format(args.dlg_eval))
+    if args.dlg_eval:
+        logger.info("DLG attack evaluate round gap: {}".format(args.dlg_gap))
+    logger.info("=" * 50)
 
     run(args)
