@@ -7,7 +7,6 @@ import time
 import warnings
 import numpy as np
 import torchvision
-import logging
 
 from flcore.servers.serveravg import FedAvg
 from flcore.servers.serverperavg import PerAvg
@@ -29,8 +28,6 @@ from utils.result_utils import average_data
 from utils.result_utils import generate_graph
 from utils.mem_utils import MemReporter
 
-logger = logging.getLogger()
-logger.setLevel(logging.ERROR)
 
 warnings.simplefilter("ignore")
 torch.manual_seed(0)
