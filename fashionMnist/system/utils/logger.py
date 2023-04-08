@@ -1,6 +1,7 @@
 import logging
 import datetime
 
+
 def get_logger(name):
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
@@ -10,9 +11,14 @@ def get_logger(name):
     file_handler = logging.FileHandler(log_file)
     file_handler.setLevel(logging.DEBUG)
 
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
     file_handler.setFormatter(formatter)
 
     logger.addHandler(file_handler)
+
+    # Disable propagation and set propagation to False
+    logger.propagate = False
 
     return logger
