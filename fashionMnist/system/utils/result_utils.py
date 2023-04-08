@@ -2,6 +2,9 @@ import h5py
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+import utils.logger as logger
+
+logger = logger.get_logger(__name__)
 
 def generate_graph(algorithm="", dataset="", goal="", times=10):
     test_acc = get_all_results_for_one_algo(algorithm, dataset, goal, times)
@@ -29,13 +32,14 @@ def generate_graph(algorithm="", dataset="", goal="", times=10):
 
 def average_data(algorithm="", dataset="", goal="", times=10):
     test_acc = get_all_results_for_one_algo(algorithm, dataset, goal, times)
-
     max_accurancy = []
     for i in range(times):
         max_accurancy.append(test_acc[i].max())
 
     print("std for best accurancy:", np.std(max_accurancy))
+    logger.info("std for best accurancy: %s", np.std(max_accurancy))
     print("mean for best accurancy:", np.mean(max_accurancy))
+    logger.info("mean for best accurancy: %s", np.mean(max_accurancy))
 
 def get_all_results_for_one_algo(algorithm="", dataset="", goal="", times=10):
     test_acc = []
