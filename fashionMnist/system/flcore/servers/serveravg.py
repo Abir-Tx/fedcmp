@@ -32,6 +32,7 @@ class FedAvg(Server):
                 logger.info(f"\n-------------Round number: {i}-------------")
                 print("\nEvaluate global model")
                 logger.info("\nEvaluate global model")
+                logger.info("The Round Number: " + str(i))
                 self.evaluate()
 
             for client in self.selected_clients:
