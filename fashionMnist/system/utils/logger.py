@@ -19,6 +19,6 @@ def get_logger(name):
     logger.addHandler(file_handler)
 
     # Disable propagation and set propagation to False
-    logger.propagate = False
+    logger.propagate = FalseA
 
     return logger

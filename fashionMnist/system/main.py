@@ -7,6 +7,8 @@ import time
 import warnings
 import numpy as np
 import torchvision
+import logging
+import datetime
 
 from flcore.servers.serveravg import FedAvg
 from flcore.servers.serverperavg import PerAvg
@@ -36,6 +38,26 @@ torch.manual_seed(0)
 vocab_size = 98635
 max_len = 200
 emb_dim = 32
+
+
+
+logger = logging.getLogger("fedcmpLogger")
+logger.setLevel(logging.DEBUG)
+
+timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+log_file = f"fedcmpLogger_{timestamp}.log"
+file_handler = logging.FileHandler(log_file)
+file_handler.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter(
+    "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+file_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+
+# Disable propagation and set propagation to False
+logger.propagate = False
 
 
 def run(args):

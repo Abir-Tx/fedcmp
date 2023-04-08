@@ -5,10 +5,12 @@ import h5py
 import copy
 import time
 import random
+import logging
 
 from utils.data_utils import read_client_data
 from utils.dlg import DLG
 
+logger = logging.getLogger("fedcmpLogger")
 
 class Server(object):
     def __init__(self, args, times):
@@ -256,10 +258,26 @@ class Server(object):
         print("Std Test Accurancy: {:.4f}".format(np.std(accs)))
         print("Std Test AUC: {:.4f}".format(np.std(aucs)))
 
+        #log to fedcmpLogger
+        logger.info("Averaged Train Loss: {:.4f}".format(train_loss))
+        logger.info("Averaged Test Accurancy: {:.4f}".format(test_acc))
+        logger.info("Averaged Test AUC: {:.4f}".format(test_auc))
+        logger.info("Std Test Accurancy: {:.4f}".format(np.std(accs)))
+        logger.info("Std Test AUC: {:.4f}".format(np.std(aucs)))
+
+
+
     def print_(self, test_acc, test_auc, train_loss):
         print("Average Test Accurancy: {:.4f}".format(test_acc))
         print("Average Test AUC: {:.4f}".format(test_auc))
         print("Average Train Loss: {:.4f}".format(train_loss))
+
+        # log to fedcmpLogger
+        logger.info("Average Test Accurancy: {:.4f}".format(test_acc))
+        logger.info("Average Test AUC: {:.4f}".format(test_auc))
+        logger.info("Average Train Loss: {:.4f}".format(train_loss))
+
+
 
     def check_done(self, acc_lss, top_cnt=None, div_value=None):
         for acc_ls in acc_lss:

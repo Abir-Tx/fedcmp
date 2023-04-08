@@ -1,5 +1,6 @@
 import math
 import gc
+import logging
 from collections import defaultdict
 from typing import Optional, Tuple, List
 
@@ -7,6 +8,8 @@ import torch
   
 from math import isnan
 from calmsize import size as calmsize
+
+logger = logging.getLogger("fedcmpLogger")
 
 def readable_size(num_bytes: int) -> str:
     return '' if isnan(num_bytes) else '{:.2f}'.format(calmsize(num_bytes))
@@ -175,6 +178,9 @@ class MemReporter():
             print('Total Tensors: {} \tUsed Memory: {}'.format(
                 total_numel, readable_size(total_mem),
             ))
+            logger.info('Total Tensors: {} \tUsed Memory: {}'.format(
+                total_numel, readable_size(total_mem),
+            ))
 
             if device != torch.device('cpu'):
                 with torch.cuda.device(device):
@@ -182,9 +188,16 @@ class MemReporter():
                 print('The allocated memory on {}: {}'.format(
                     device, readable_size(memory_allocated),
                 ))
+                logger.info('The allocated memory on {}: {}'.format(
+                    device, readable_size(memory_allocated),
+                ))
+
                 if memory_allocated != total_mem:
                     print('Memory differs due to the matrix alignment or'
                           ' invisible gradient buffer tensors')
+                    logger.warning('Memory differs due to the matrix alignment or'
+                            ' invisible gradient buffer tensors')
+
             print('-'*LEN)
 
     def report(self, verbose: bool = False, device: Optional[torch.device] = None) -> None:
