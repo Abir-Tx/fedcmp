@@ -24,7 +24,7 @@ def generate_graph(algorithm="", dataset="", goal="", times=10):
     plt.title("Test Accuracy and Train Loss vs Communication Rounds for " + algorithm + " on " + dataset + " dataset")
     ax1.legend()
     plt.show()
-    plt.savefig("../results/" + dataset + "_" + algorithm + "_" + goal + "_" + str(times) + ".png")
+    plt.savefig("../results/" + dataset + "_" + algorithm + "_" + goal + "_" + str(times) + "_" + str(len(test_acc)) + ".png")
 
 
 def average_data(algorithm="", dataset="", goal="", times=10):
