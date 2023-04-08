@@ -41,23 +41,19 @@ emb_dim = 32
 
 
 
+# The FedCMP Logger System implementation. The purpose of this logger is to log all the output of the program to a log file. This one logger is
+# used throughout the entire program. The logger is configured to log to a file and to the console. The logger is configured to log all messages
+# with a level of DEBUG or higher. The logger is configured to log the date, time, name of the logger, the level of the message, and the message
+# itself. The logger does not output to the console. As its sole purpose is mainly to help to export the data to other file formats and later debug or analysis.
+# The rest of the logger is configured at line no 360
+# The logger is called fedcmpLogger
+# Implemented by: Mushfiqur Rahman Abir aka Abir-Tx
 logger = logging.getLogger("fedcmpLogger")
 logger.setLevel(logging.DEBUG)
 
+
+log_dir = "../logs"
 timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
-log_file = f"logs/fedcmpLogger_{timestamp}.log"
-file_handler = logging.FileHandler(log_file)
-file_handler.setLevel(logging.DEBUG)
-
-formatter = logging.Formatter(
-    "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
-file_handler.setFormatter(formatter)
-
-logger.addHandler(file_handler)
-
-# Disable propagation and set propagation to False
-logger.propagate = False
 
 logger.info(
     r"""
@@ -359,6 +355,22 @@ if __name__ == "__main__":
     parser.add_argument("-slr", "--server_learning_rate", type=float, default=1.0)
 
     args = parser.parse_args()
+
+    
+    # Logger setting
+    log_file = f"{log_dir}/fedcmpLogger_{timestamp}_rounds_{args.global_rounds}_clients_{args.num_clients}.log"
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setLevel(logging.DEBUG)
+
+    formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+    file_handler.setFormatter(formatter)
+
+    logger.addHandler(file_handler)
+
+    # Disable propagation and set propagation to False
+    logger.propagate = False
 
     os.environ["CUDA_VISIBLE_DEVICES"] = args.device_id
 
