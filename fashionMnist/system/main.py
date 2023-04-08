@@ -11,13 +11,13 @@ import logging
 import matplotlib.pyplot as plt
 
 from flcore.servers.serveravg import FedAvg
-from flcore.servers.serverpFedMe import pFedMe
 from flcore.servers.serverperavg import PerAvg
 from flcore.servers.serverprox import FedProx
 from flcore.servers.serverper import FedPer
 from flcore.servers.serverbabu import FedBABU
 from flcore.servers.serverapple import APPLE
-from flcore.servers.serverscaffold import SCAFFOLD
+from flcore.servers.serverproto import FedProto
+from flcore.servers.serverrod import FedROD
 
 from flcore.trainmodel.models import *
 
@@ -107,17 +107,30 @@ def run(args):
         elif args.algorithm == "PerAvg":
             server = PerAvg(args, i)
 
-        elif args.algorithm == "pFedMe":
-            server = pFedMe(args, i)
-
         elif args.algorithm == "FedProx":
             server = FedProx(args, i)
+
+        elif args.algorithm == "FedProto":
+            args.head = copy.deepcopy(args.model.fc)
+            args.model.fc = nn.Identity()
+            args.model = BaseHeadSplit(args.model, args.head)
+            server = FedProto(args, i)
 
         elif args.algorithm == "FedBABU":
             args.head = copy.deepcopy(args.model.fc)
             args.model.fc = nn.Identity()
             args.model = BaseHeadSplit(args.model, args.head)
             server = FedBABU(args, i)
+
+        elif args.algorithm == "FedROD":
+            args.head = copy.deepcopy(args.model.fc)
+            args.model.fc = nn.Identity()
+            args.model = BaseHeadSplit(args.model, args.head)
+            server = FedROD(args, i)
+
+        elif args.algorithm == "APPLE":
+            server = APPLE(args, i)
+
         else:
             raise NotImplementedError
 
