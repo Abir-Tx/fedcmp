@@ -8,7 +8,6 @@ import warnings
 import numpy as np
 import torchvision
 import logging
-import matplotlib.pyplot as plt
 
 from flcore.servers.serveravg import FedAvg
 from flcore.servers.serverperavg import PerAvg
