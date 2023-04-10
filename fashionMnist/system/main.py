@@ -40,7 +40,6 @@ max_len = 200
 emb_dim = 32
 
 
-
 # The FedCMP Logger System implementation. The purpose of this logger is to log all the output of the program to a log file. This one logger is
 # used throughout the entire program. The logger is configured to log to a file and to the console. The logger is configured to log all messages
 # with a level of DEBUG or higher. The logger is configured to log the date, time, name of the logger, the level of the message, and the message
@@ -55,18 +54,6 @@ logger.setLevel(logging.DEBUG)
 log_dir = "../logs"
 timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
 
-logger.info(
-    r"""
-      ______       _  _____ __  __ _____    _                                 
- |  ____|     | |/ ____|  \/  |  __ \  | |                                
- | |__ ___  __| | |    | \  / | |__) | | |     ___   __ _  __ _  ___ _ __ 
- |  __/ _ \/ _` | |    | |\/| |  ___/  | |    / _ \ / _` |/ _` |/ _ \ '__|
- | | |  __/ (_| | |____| |  | | |      | |___| (_) | (_| | (_| |  __/ |   
- |_|  \___|\__,_|\_____|_|  |_|_|      |______\___/ \__, |\__, |\___|_|   
-                                                     __/ | __/ |          
-                                                    |___/ |___/
-"""
-)
 
 def run(args):
     time_list = []
@@ -356,7 +343,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    
     # Logger setting
     log_file = f"{log_dir}/fedcmpLogger_{timestamp}_rounds_{args.global_rounds}_clients_{args.num_clients}.log"
     file_handler = logging.FileHandler(log_file)
@@ -371,6 +357,19 @@ if __name__ == "__main__":
 
     # Disable propagation and set propagation to False
     logger.propagate = False
+
+    logger.info(
+        r"""
+        ______       _  _____ __  __ _____    _                                 
+    |  ____|     | |/ ____|  \/  |  __ \  | |                                
+    | |__ ___  __| | |    | \  / | |__) | | |     ___   __ _  __ _  ___ _ __ 
+    |  __/ _ \/ _` | |    | |\/| |  ___/  | |    / _ \ / _` |/ _` |/ _ \ '__|
+    | | |  __/ (_| | |____| |  | | |      | |___| (_) | (_| | (_| |  __/ |   
+    |_|  \___|\__,_|\_____|_|  |_|_|      |______\___/ \__, |\__, |\___|_|   
+                                                        __/ | __/ |          
+                                                        |___/ |___/
+    """
+    )
 
     os.environ["CUDA_VISIBLE_DEVICES"] = args.device_id
 
@@ -414,7 +413,7 @@ if __name__ == "__main__":
         print("DLG attack evaluate round gap: {}".format(args.dlg_gap))
     print("=" * 50)
 
-    # Log these 
+    # Log these
     logger.info("Algorithm: {}".format(args.algorithm))
     logger.info("Local batch size: {}".format(args.batch_size))
     logger.info("Local steps: {}".format(args.local_steps))
