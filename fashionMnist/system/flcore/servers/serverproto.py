@@ -5,6 +5,9 @@ from threading import Thread
 import time
 import numpy as np
 from collections import defaultdict
+import logging
+
+logger = logging.getLogger("fedcmpLogger")
 
 
 class FedProto(Server):
@@ -31,6 +34,7 @@ class FedProto(Server):
 
             if i%self.eval_gap == 0:
                 print(f"\n-------------Round number: {i}-------------")
+                logger.info("Round number: {i}-------------")
                 print("\nEvaluate personalized models")
                 self.evaluate()
 
@@ -102,6 +106,13 @@ class FedProto(Server):
         print("Averaged Test Accurancy: {:.4f}".format(test_acc))
         # self.print_(test_acc, train_acc, train_loss)
         print("Std Test Accurancy: {:.4f}".format(np.std(accs)))
+
+        # Log 
+        logger.info("Averaged Train Loss: {:.4f}".format(train_loss))
+        logger.info("Averaged Test Accurancy: {:.4f}".format(test_acc))
+        logger.info("Std Test Accurancy: {:.4f}".format(np.std(accs)))
+
+
             
 
 # https://github.com/yuetan031/fedproto/blob/main/lib/utils.py#L221
