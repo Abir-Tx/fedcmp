@@ -1,6 +1,6 @@
 # fedcmp
 
-A repo to show the visual comparison between different federated learning algorithms.
+A repo to show the visual comparison between different federated learning algorithms. This is the official repo for our paper on An Analysis of **Personalized Federated Learning Algorithms with an Improvement of Intuitive Protected Model Training**
 
 ## Algorithms planned to be implemented
 
@@ -9,8 +9,10 @@ A repo to show the visual comparison between different federated learning algori
 
 - [x] FedAvg
 - [x] FedProx
-- [ ] PerFedAvg
-- [ ] QFed
+- [x] FedProto
+- [x] FedBABU
+- [x] APPLE
+
 </details>
 <br>
 
