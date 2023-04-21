@@ -11,13 +11,10 @@ import logging
 import datetime
 
 from flcore.servers.serveravg import FedAvg
-from flcore.servers.serverperavg import PerAvg
 from flcore.servers.serverprox import FedProx
-from flcore.servers.serverper import FedPer
 from flcore.servers.serverbabu import FedBABU
 from flcore.servers.serverapple import APPLE
 from flcore.servers.serverproto import FedProto
-from flcore.servers.serverrod import FedROD
 
 from flcore.trainmodel.models import *
 
