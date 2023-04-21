@@ -7,7 +7,7 @@ import logging
 logger = logging.getLogger("fedcmpLogger")
 
 
-def generate_graph(algorithm="", dataset="", goal="", times=10):
+def generate_graph(algorithm="", dataset="", goal="", times=10, rounds=3, clients=1):
     # Validate input parameters
     if not algorithm:
         raise ValueError("Algorithm name cannot be empty")
@@ -53,20 +53,21 @@ def generate_graph(algorithm="", dataset="", goal="", times=10):
     )
 
     # Save and show plot
-    plt.savefig(
-        "../results/"
-        + dataset
+    filename = (
+        dataset
         + "_"
         + algorithm
-        + "_"
-        + goal
-        + "_"
-        + str(times)
-        + "_"
-        + str(len(test_acc))
-        + ".png"
+        + "_rounds_"
+        + str(rounds)
+        + "_clients_"
+        + str(clients)
     )
+    plt.savefig("../results/" + filename + ".png")
     plt.show()
+    print(
+        "The graph has been saved to the: ",
+        "../results/" + filename + ".png",
+    )
 
 
 def average_data(algorithm="", dataset="", goal="", times=10):

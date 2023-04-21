@@ -157,6 +157,8 @@ def run(args):
         algorithm=args.algorithm,
         goal=args.goal,
         times=args.times,
+        rounds=args.global_rounds,
+        clients=args.num_clients,
     )
 
     print("All done!")
@@ -338,7 +340,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Logger setting
-    log_file = f"{log_dir}/fedcmpLogger_{timestamp}_rounds_{args.global_rounds}_clients_{args.num_clients}.log"
+    log_file = f"{log_dir}/fedcmpLogger_{timestamp}_rounds_{args.global_rounds}_clients_{args.num_clients}_algo_{args.algorithm}.log"
     file_handler = logging.FileHandler(log_file)
     file_handler.setLevel(logging.DEBUG)
 
@@ -443,3 +445,5 @@ if __name__ == "__main__":
     logger.info("=" * 50)
 
     run(args)
+
+    print("The log file is saved in {}".format(log_file))
