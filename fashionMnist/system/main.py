@@ -41,7 +41,7 @@ emb_dim = 32
 # used throughout the entire program. The logger is configured to log to a file and to the console. The logger is configured to log all messages
 # with a level of DEBUG or higher. The logger is configured to log the date, time, name of the logger, the level of the message, and the message
 # itself. The logger does not output to the console. As its sole purpose is mainly to help to export the data to other file formats and later debug or analysis.
-# The rest of the logger is configured at line no 360
+# The rest of the logger is configured at line no 343
 # The logger is called fedcmpLogger
 # Implemented by: Mushfiqur Rahman Abir aka Abir-Tx
 logger = logging.getLogger("fedcmpLogger")
