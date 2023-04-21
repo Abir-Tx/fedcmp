@@ -6,7 +6,19 @@ import logging
 
 logger = logging.getLogger("fedcmpLogger")
 
+
 def generate_graph(algorithm="", dataset="", goal="", times=10):
+    # Validate input parameters
+    if not algorithm:
+        raise ValueError("Algorithm name cannot be empty")
+    if not dataset:
+        raise ValueError("Dataset name cannot be empty")
+    if not goal:
+        raise ValueError("Goal name cannot be empty")
+    if times <= 0:
+        raise ValueError("Number of times must be positive")
+
+    #  Get the results
     test_acc = get_all_results_for_one_algo(algorithm, dataset, goal, times)
     test_loss = get_train_loss_for_one_algo(algorithm, dataset, goal, times)
     test_acc = np.array(test_acc)
@@ -19,6 +31,7 @@ def generate_graph(algorithm="", dataset="", goal="", times=10):
         test_loss.ravel().tolist() for loss in test_loss
     ]  # convert numpy arrays to lists
 
+    #  Plot the results
     fig, ax1 = plt.subplots()
     ax2 = ax1.twinx()
     for i in range(times):
@@ -30,6 +43,7 @@ def generate_graph(algorithm="", dataset="", goal="", times=10):
     ax1.set_xlabel("Communication round")
     ax1.set_ylabel("Test accuracy", color="g")
     ax2.set_ylabel("Train loss", color="b")
+    ax1.legend()
     plt.title(
         "Test Accuracy and Train Loss vs Communication Rounds for "
         + algorithm
@@ -37,8 +51,8 @@ def generate_graph(algorithm="", dataset="", goal="", times=10):
         + dataset
         + " dataset"
     )
-    ax1.legend()
-    plt.show()
+
+    # Save and show plot
     plt.savefig(
         "../results/"
         + dataset
@@ -52,6 +66,7 @@ def generate_graph(algorithm="", dataset="", goal="", times=10):
         + str(len(test_acc))
         + ".png"
     )
+    plt.show()
 
 
 def average_data(algorithm="", dataset="", goal="", times=10):
@@ -95,13 +110,15 @@ def get_train_loss_for_one_algo(algorithm="", dataset="", goal="", times=10):
     for i in range(times):
         file_name = dataset + "_" + algorithms_list[i] + "_" + goal + "_" + str(i)
         train_loss.append(
-            np.array(read_train_loss(file_name, delete=False, is_train=True))
+            np.array(
+                read_train_loss_then_delete(file_name, delete=False, is_train=True)
+            )
         )
 
     return train_loss
 
 
-def read_train_loss(file_name, delete=False, is_train=False):
+def read_train_loss_then_delete(file_name, delete=False, is_train=False):
     file_path = "../results/" + file_name + ".h5"
 
     with h5py.File(file_path, "r") as hf:
