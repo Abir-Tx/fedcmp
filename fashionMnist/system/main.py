@@ -49,6 +49,12 @@ logger.setLevel(logging.DEBUG)
 
 
 log_dir = "../logs"
+
+# Create the log directory if it does not exist
+
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
 timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
 
 
