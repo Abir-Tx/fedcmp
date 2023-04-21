@@ -114,9 +114,6 @@ def run(args):
             args.model = BaseHeadSplit(args.model, args.head)
             server = FedAvg(args, i)
 
-        elif args.algorithm == "PerAvg":
-            server = PerAvg(args, i)
-
         elif args.algorithm == "FedProx":
             server = FedProx(args, i)
 
@@ -131,12 +128,6 @@ def run(args):
             args.model.fc = nn.Identity()
             args.model = BaseHeadSplit(args.model, args.head)
             server = FedBABU(args, i)
-
-        elif args.algorithm == "FedROD":
-            args.head = copy.deepcopy(args.model.fc)
-            args.model.fc = nn.Identity()
-            args.model = BaseHeadSplit(args.model, args.head)
-            server = FedROD(args, i)
 
         elif args.algorithm == "APPLE":
             server = APPLE(args, i)
