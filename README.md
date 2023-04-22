@@ -107,26 +107,16 @@ The directory structure is not same as the `mnist` directory. The `fashionMnist`
 
 ```bash
 fashionMnist
-├───fedavg
-│   ├───client
-│   │   ├───client.py
-│   │   └───__init__.py
-│   ├───server
-│   │   ├───server.py
-│   │   └───__init__.py
-│   ├───venv
-│   ├───main.py
-│   └───requirements.txt
-├───fedbabu
-│   ├───client
-│   │   ├───client.py
-│   │   └───__init__.py
-│   ├───server
-│   │   ├───server.py
-│   │   └───__init__.py
-│   ├───venv
-│   ├───main.py
-│   └───requirements.txt
+|--- dataset
+|--- logs
+|--- results
+|--- system
+|  |--- models
+|  |--- utils
+|  |--- main.py
+|--- venv
+|--- requirements.txt
+
 ```
 
 ### 1. Install dependencies
