@@ -84,6 +84,24 @@ The main script has to be run from the **system** directory. The main script is 
 python main.py -data fmnist -m cnn -algo FedAvg -gr 10 -did 0 -go cnn -nc 1
 ```
 
+#### Arguments description
+
+- `-data`: The dataset to use. Currently only `fmnist` is supported.
+- `-m`: The model to use. Currently only `cnn` is supported.
+- `-algo`: The algorithm to use. Currently only `FedAvg`, `FedProto`, `FedBABU`, and `APPLE` are supported.
+- `-gr`: The number of global rounds to run the algorithm.
+- `-did`: The device id. This is used to differentiate between different devices. This is used for logging purposes.
+- `-go`: The global optimizer to use. Currently only `cnn` is supported.
+- `-nc`: The number of clients to use. Currently the maximum number of clients supported is 20. (Tested on core-i9 machine)
+
+So to run different algorithms on the FMNIST dataset, you just have to change the `-algo` argument. For example, to run the FedProto algorithm, you have to run the following command:
+
+```bash
+python main.py -data fmnist -m cnn -algo FedProto -gr 10 -did 0 -go cnn -nc 1
+```
+
+<!-- #### Getting the results TODO -->
+
 ## MNIST
 
 ### FedAvg
