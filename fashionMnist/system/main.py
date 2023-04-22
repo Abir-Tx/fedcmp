@@ -6,18 +6,15 @@ import os
 import time
 import warnings
 import numpy as np
-import torchvision
+
 import logging
 import datetime
 
 from flcore.servers.serveravg import FedAvg
-from flcore.servers.serverperavg import PerAvg
 from flcore.servers.serverprox import FedProx
-from flcore.servers.serverper import FedPer
 from flcore.servers.serverbabu import FedBABU
 from flcore.servers.serverapple import APPLE
 from flcore.servers.serverproto import FedProto
-from flcore.servers.serverrod import FedROD
 
 from flcore.trainmodel.models import *
 
@@ -44,7 +41,7 @@ emb_dim = 32
 # used throughout the entire program. The logger is configured to log to a file and to the console. The logger is configured to log all messages
 # with a level of DEBUG or higher. The logger is configured to log the date, time, name of the logger, the level of the message, and the message
 # itself. The logger does not output to the console. As its sole purpose is mainly to help to export the data to other file formats and later debug or analysis.
-# The rest of the logger is configured at line no 360
+# The rest of the logger is configured at line no 343
 # The logger is called fedcmpLogger
 # Implemented by: Mushfiqur Rahman Abir aka Abir-Tx
 logger = logging.getLogger("fedcmpLogger")
@@ -52,6 +49,12 @@ logger.setLevel(logging.DEBUG)
 
 
 log_dir = "../logs"
+
+# Create the log directory if it does not exist
+
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
 timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
 
 
@@ -117,9 +120,6 @@ def run(args):
             args.model = BaseHeadSplit(args.model, args.head)
             server = FedAvg(args, i)
 
-        elif args.algorithm == "PerAvg":
-            server = PerAvg(args, i)
-
         elif args.algorithm == "FedProx":
             server = FedProx(args, i)
 
@@ -134,12 +134,6 @@ def run(args):
             args.model.fc = nn.Identity()
             args.model = BaseHeadSplit(args.model, args.head)
             server = FedBABU(args, i)
-
-        elif args.algorithm == "FedROD":
-            args.head = copy.deepcopy(args.model.fc)
-            args.model.fc = nn.Identity()
-            args.model = BaseHeadSplit(args.model, args.head)
-            server = FedROD(args, i)
 
         elif args.algorithm == "APPLE":
             server = APPLE(args, i)
@@ -163,6 +157,8 @@ def run(args):
         algorithm=args.algorithm,
         goal=args.goal,
         times=args.times,
+        rounds=args.global_rounds,
+        clients=args.num_clients,
     )
 
     print("All done!")
@@ -344,7 +340,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Logger setting
-    log_file = f"{log_dir}/fedcmpLogger_{timestamp}_rounds_{args.global_rounds}_clients_{args.num_clients}.log"
+    log_file = f"{log_dir}/fedcmpLogger_{timestamp}_rounds_{args.global_rounds}_clients_{args.num_clients}_algo_{args.algorithm}.log"
     file_handler = logging.FileHandler(log_file)
     file_handler.setLevel(logging.DEBUG)
 
@@ -449,3 +445,5 @@ if __name__ == "__main__":
     logger.info("=" * 50)
 
     run(args)
+
+    print("The log file is saved in {}".format(log_file))
