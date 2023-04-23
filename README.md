@@ -100,7 +100,9 @@ So to run different algorithms on the FMNIST dataset, you just have to change th
 python main.py -data fmnist -m cnn -algo FedProto -gr 10 -did 0 -go cnn -nc 1
 ```
 
-<!-- #### Getting the results TODO -->
+#### Getting the results
+
+The generated images and the execution logs are saved in separate directories. The images are saved in the `results` directory and the logs are saved in the `logs` directory.
 
 ## MNIST
 
