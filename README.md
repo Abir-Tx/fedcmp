@@ -20,7 +20,7 @@ A repo to show the visual comparison between different federated learning algori
 
 ## Runtime Environment
 
-- **OS**: Windows (Tested on Windows 10)
+- **OS**: Windows (Tested on Windows 10 21H2), Linux (Arch Linux 2023.4.1)
 - Python 3.10.9
 - `pip --verison`:
 
