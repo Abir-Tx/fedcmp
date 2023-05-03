@@ -1,6 +1,0 @@
-dataset/
-outputs/
-playground.ipynb
-multirun/
-# the data folder which is being used by the new updated fedavg code provided by Tanjib
-data/
