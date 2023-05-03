@@ -1,6 +1,6 @@
 # fedcmp
 
-A repo to show the visual comparison between different federated learning algorithms. This is the official repo for our paper on An Analysis of **Personalized Federated Learning Algorithms with an Improvement of Intuitive Protected Model Training**
+A repo to show the visual comparison between different federated learning algorithms. This is the official repo for our paper on An Analysis of **Personalized Federated Learning Algorithms with an Intuitive Protected Model Training**
 
 ## Algorithms planned to be implemented
 
@@ -8,7 +8,6 @@ A repo to show the visual comparison between different federated learning algori
 <summary>Click to expand</summary>
 
 - [x] FedAvg
-- [x] FedProx
 - [x] FedProto
 - [x] FedBABU
 - [x] APPLE
@@ -24,9 +23,6 @@ A repo to show the visual comparison between different federated learning algori
 - Python 3.10.9
 - `pip --verison`:
 
-```bash
-pip 23.0 from fedcmp\mnist\fedavg\venv\lib\site-packages\pip (python 3.10)
-```
 
 ## Projec Structure
 
@@ -46,16 +42,6 @@ fashionMnist
 
 ```
 
-### MNIST
-
-```bash
-root
-├───dataset
-│   ├───algorithm
-│   │   ├───driver codes
-│   │   ├───venv
-│   │   ├───requirements.txt
-```
 
 # Steps to run
 
@@ -104,43 +90,6 @@ python main.py -data fmnist -m cnn -algo FedProto -gr 10 -did 0 -go cnn -nc 1
 
 The generated images and the execution logs are saved in separate directories. The images are saved in the `results` directory and the logs are saved in the `logs` directory.
 
-## MNIST
-
-### FedAvg
-
-#### 1. Install dependencies
-
-First of all **activate the virtual environment**. Then run the following command:
-
-```bash
-pip install -r requirements.txt
-pip install flwr["simulation"]
-```
-
-#### 2. Run the main script
-
-```bash
-python main.py
-```
-
-### FedProx
-
-#### 1. Install dependencies
-
-First of all **activate the virtual environment**. Then run the following command:
-
-```bash
-pip install -r requirements.txt
-pip install -U flwr["simulation"]
-
-```
-
-#### 2. Run the main script
-
-```bash
-python main.py num_epochs=5 num_rounds=1000 iid=True
-```
-
 # Credits
 
 - Used the [MNIST dataset](https://www.tensorflow.org/datasets/catalog/mnist) from TensorFlow Datasets
@@ -150,7 +99,7 @@ python main.py num_epochs=5 num_rounds=1000 iid=True
 
 # Authors
 
-<a href="https://github.com/abir-tx"><img src="https://avatars.githubusercontent.com/u/28858998?v=4" width="50" height="50" title="Mushfiqur Rahman Abir"/></a> <a href="https://github.com/karit7"><img src="https://avatars.githubusercontent.com/u/120469589?v=4" width="50" height="50" title="Tanzib Hosain" /></a>
+<a href="https://github.com/abir-tx"><img src="https://avatars.githubusercontent.com/u/28858998?v=4" width="50" height="50" title="Mushfiqur Rahman Abir"/></a> <a href="https://github.com/karit7"><img src="https://avatars.githubusercontent.com/u/120469589?v=4" width="50" height="50" title="Md. Tanzib Hosain" /></a>
 
 # License
 
