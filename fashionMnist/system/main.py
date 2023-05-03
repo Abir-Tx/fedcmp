@@ -11,7 +11,6 @@ import logging
 import datetime
 
 from flcore.servers.serveravg import FedAvg
-from flcore.servers.serverprox import FedProx
 from flcore.servers.serverbabu import FedBABU
 from flcore.servers.serverapple import APPLE
 from flcore.servers.serverproto import FedProto
