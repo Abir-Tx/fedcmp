@@ -130,3 +130,4 @@ dmypy.json
 
 # Custom
 mnist/fedavg/docs/4-2-23_first_run_terminal_export-windows_10.txt
+Cifar100/
