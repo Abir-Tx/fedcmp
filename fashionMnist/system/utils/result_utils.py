@@ -45,7 +45,8 @@ def generate_graph(algorithm="", dataset="", goal="", times=10, rounds=3, client
     ax2.set_ylabel("Train loss", color="b")
     ax1.legend()
     plt.title(
-        "Test Accuracy and Train Loss vs Communication Rounds for "
+        "Test Accuracy and Train Loss vs Communication Rounds\n"
+        +" for "
         + algorithm
         + " on "
         + dataset
