@@ -1,0 +1,19 @@
+# Define the Python interpreter to use
+PYTHON = python
+
+# Define the default target
+all: run
+
+# Define the run target
+run:
+    $(PYTHON) main.py
+
+# Define other targets and their dependencies
+test:
+    $(PYTHON) -m unittest discover tests
+
+clean:
+    rm -rf __pycache__ *.pyc
+
+.PHONY: all run test clean
+
