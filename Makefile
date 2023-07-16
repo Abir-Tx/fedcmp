@@ -2,9 +2,10 @@
 PYTHON = python
 PIP = pip
 
-DATA ?= fmnist
+DATA ?= mnist
 GR ?= 3
 NC ?= 1
+ALGO ?= FedAvg
 
 # Define the default target
 all: run
@@ -12,7 +13,7 @@ all: run
 
 run:
 	cd system && \
-	${PYTHON} main.py -data $(DATA) -m cnn -algo FedAvg -gr $(GR) -did 0 -go cnn -nc $(NC)
+	${PYTHON} main.py -data $(DATA) -m cnn -algo $(ALGO) -gr $(GR) -did 0 -go cnn -nc $(NC)
 
 
 config:
