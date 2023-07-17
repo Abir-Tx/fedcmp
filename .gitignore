@@ -137,3 +137,5 @@ models/*
 logs/*
 dataset/mnist
 dataset/Digit5
+dataset/Cifar10
+
