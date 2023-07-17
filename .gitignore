@@ -135,3 +135,5 @@ results
 system/models/*
 models/*
 logs/*
+dataset/mnist
+dataset/Digit5
