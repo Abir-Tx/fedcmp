@@ -23,13 +23,11 @@ A repo to show the visual comparison between different federated learning algori
 - Python 3.10.9
 - `pip --verison`:
 
-
 ## Projec Structure
 
 ## FMNIST
 
 ```bash
-fashionMnist
 |--- dataset
 |--- logs
 |--- results
@@ -42,12 +40,11 @@ fashionMnist
 
 ```
 
-
 # Steps to run
 
-## FMNIST
+## Manually
 
-The FMNIST dataset and the algorithms operating on the dataset is implemented inside the `fashionMnist` directory. The base code & inspiration is taken from the [PFL-NON-IID](https://github.com/TsingZ0/PFL-Non-IID) repo. The code is modified to work with our project structure with added support for logging, visualization, and more. Currently the algorithms implemented inside the `fashionMnist` directory are:
+The FMNIST dataset and the algorithms operating on the dataset is implemented inside `this` directory. The base code & inspiration is taken from the [PFL-NON-IID](https://github.com/TsingZ0/PFL-Non-IID) repo. The code is modified to work with our project structure with added support for logging, visualization, and more. Currently the algorithms implemented inside the `this` directory are:
 
 - FedAvg
 - FedProto
@@ -56,7 +53,7 @@ The FMNIST dataset and the algorithms operating on the dataset is implemented in
 
 ### 1. Install dependencies
 
-There is `requirements.txt` file for all the algorithms inside the `fashionMnist` directory. First of all **activate the virtual environment**. Then run the following command:
+There is `requirements.txt` file for all the algorithms inside `this` directory. First of all **activate the virtual environment**. Then run the following command:
 
 ```bash
 pip install -r requirements.txt
@@ -64,11 +61,27 @@ pip install -r requirements.txt
 
 ### 2. Run the main script
 
-The main script has to be run from the **system** directory. The main script is `main.py` and it is located inside the `fashionMnist` directory. The main script has the following arguments:
+The main script has to be run from the **system** directory. The main script is `main.py` and it is located inside `this` directory. The main script has the following arguments:
 
 ```bash
 python main.py -data fmnist -m cnn -algo FedAvg -gr 10 -did 0 -go cnn -nc 1
 ```
+
+## Using Make
+
+I have added a `Makefile` to run the algorithms. The `Makefile` is located inside `this` directory. The `Makefile` has the following commands:
+
+- `make run`: Run the main script with the default arguments
+- `make config`: Makes sure that all the needed directories are created & packages are installed and then check if the `venv` is activated or not. If not, then activate the `venv`.
+- `make clean`: Clean the `venv` and the `__pycache__` directories & other unwanted files/directories.
+
+The `make run` command runs the main script with the following arguments:
+
+```bash
+make run DATA=Cifar10 GR=3 NC=1 ALGO=FedAvg
+```
+
+Here the `DATA` argument is the dataset to use, the `GR` argument is the number of global rounds to run the algorithm, the `NC` argument is the number of clients to use, and the `ALGO` argument is the algorithm to use. The `DATA` argument is required, the `GR` argument is optional and the default value is 3, the `NC` argument is optional and the default value is 1, and the `ALGO` argument is optional and the default value is FedAvg.
 
 #### Arguments description
 
