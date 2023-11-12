@@ -67,22 +67,6 @@ The main script has to be run from the **system** directory. The main script is 
 python main.py -data fmnist -m cnn -algo FedAvg -gr 10 -did 0 -go cnn -nc 1
 ```
 
-## Using Make
-
-I have added a `Makefile` to run the algorithms. The `Makefile` is located inside `this` directory. The `Makefile` has the following commands:
-
-- `make run`: Run the main script with the default arguments
-- `make config`: Makes sure that all the needed directories are created & packages are installed and then check if the `venv` is activated or not. If not, then activate the `venv`.
-- `make clean`: Clean the `venv` and the `__pycache__` directories & other unwanted files/directories.
-
-The `make run` command runs the main script with the following arguments:
-
-```bash
-make run DATA=Cifar10 GR=3 NC=1 ALGO=FedAvg
-```
-
-Here the `DATA` argument is the dataset to use, the `GR` argument is the number of global rounds to run the algorithm, the `NC` argument is the number of clients to use, and the `ALGO` argument is the algorithm to use. The `DATA` argument is required, the `GR` argument is optional and the default value is 3, the `NC` argument is optional and the default value is 1, and the `ALGO` argument is optional and the default value is FedAvg.
-
 #### Arguments description
 
 - `-data`: The dataset to use. Currently only `fmnist` is supported.
@@ -99,7 +83,23 @@ So to run different algorithms on the FMNIST dataset, you just have to change th
 python main.py -data fmnist -m cnn -algo FedProto -gr 10 -did 0 -go cnn -nc 1
 ```
 
-#### Getting the results
+## Using Make
+
+I have added a `Makefile` to run the algorithms. The `Makefile` is located inside `this` directory. The `Makefile` has the following commands:
+
+- `make run`: Run the main script with the default arguments
+- `make config`: Makes sure that all the needed directories are created & packages are installed and then check if the `venv` is activated or not. If not, then activate the `venv`.
+- `make clean`: Clean the `venv` and the `__pycache__` directories & other unwanted files/directories.
+
+The `make run` command runs the main script with the following arguments:
+
+```bash
+make run DATA=Cifar10 GR=3 NC=1 ALGO=FedAvg
+```
+
+Here the `DATA` argument is the dataset to use, the `GR` argument is the number of global rounds to run the algorithm, the `NC` argument is the number of clients to use, and the `ALGO` argument is the algorithm to use. The `DATA` argument is required, the `GR` argument is optional and the default value is 3, the `NC` argument is optional and the default value is 1, and the `ALGO` argument is optional and the default value is FedAvg.
+
+### Getting the results
 
 The generated images and the execution logs are saved in separate directories. The images are saved in the `results` directory and the logs are saved in the `logs` directory.
 
